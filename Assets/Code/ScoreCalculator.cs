@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreCalculator : MonoBehaviour
 {
-    private int CalculateScore(List<Die> selectedDice)
+    public int CalculateScore(List<Die> selectedDice)
     {
         if (selectedDice.Count == 0 || selectedDice == null)
         {

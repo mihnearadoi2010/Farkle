@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class Player
 {
     public int TotalScore { get; private set; }
     public int RoundScore { get; private set; }
-    public int SelectedScore { get; private set; }
+    public int SelectedScore { get; set; }
 
-    private Die[] dice = new Die[6];
-    public List<Die> CurrentDice { get; } // dice that haven't been scored
-    public List<Die> selectedDice { get; }
+    public Die[] dice { get; } = new Die[6];
+    public List<Die> CurrentDice { get; set; } // dice that haven't been scored
 
     public Player()
     {
