@@ -13,6 +13,11 @@ public class Player
 
     public Player()
     {
+        for (int i = 0; i < dice.Length; i++ )
+        {
+            dice[i] = new Die();
+        }
+
         CurrentDice = dice.ToList();
     }
 
@@ -20,6 +25,10 @@ public class Player
     {
         RoundScore += SelectedScore;
         SelectedScore = 0;
+        if (CurrentDice.Count == 0)
+        {
+            CurrentDice = dice.ToList();
+        }
     }
 
     public void ScoreRoundScore()
@@ -27,5 +36,13 @@ public class Player
         ScoreSelectedScore();
         TotalScore += RoundScore;
         RoundScore = 0;
+        CurrentDice = dice.ToList();
+    }
+
+    public void BustScore()
+    {
+        SelectedScore = 0;
+        RoundScore = 0;
+        CurrentDice = dice.ToList();
     }
 }

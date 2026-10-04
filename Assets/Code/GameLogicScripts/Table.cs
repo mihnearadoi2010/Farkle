@@ -3,14 +3,15 @@ using System.Linq;
 
 public class Table
 {
-    private Player player1 = new Player();
-    private Player player2 = new Player();
-    private Player currentPlayer;
-    private ScoreCalculator scoreCalculator;
+    public Player player1 { get; private set; } = new Player();
+    public Player player2 { get; private set; } = new Player();
+    public Player currentPlayer { get; private set; }
+    private ScoreCalculator scoreCalculator = new();
 
     public Table()
     {
         currentPlayer = player1;
+        ThrowCurrentPlayerDice();
     }
 
     private void ThrowCurrentPlayerDice()
@@ -19,6 +20,7 @@ public class Table
         {
             die.Roll();
         }
+        CheckForBust();
     }
 
     public void scoreAndContinue(List<Die> selectedDice)
@@ -43,8 +45,6 @@ public class Table
         if (score == 0) { return; }
 
         currentPlayer.CurrentDice = currentPlayer.dice.ToList();
-        
-        ThrowCurrentPlayerDice();
 
         currentPlayer.SelectedScore = score;
         currentPlayer.ScoreRoundScore();
@@ -57,6 +57,26 @@ public class Table
         {
             currentPlayer = player1;
         }
+
+        ThrowCurrentPlayerDice();
     }
 
+    private void CheckForBust()
+    {
+        if (scoreCalculator.CalculateScore(currentPlayer.dice.ToList()) == 0)
+        {
+            currentPlayer.BustScore();
+
+            if (currentPlayer == player1)
+            {
+                currentPlayer = player2;
+            }
+            else
+            {
+                currentPlayer = player1;
+            }
+
+            ThrowCurrentPlayerDice();
+        }
+    }
 }

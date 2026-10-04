@@ -1,7 +1,8 @@
-using UnityEngine;
+using System;
 
 public class Die
 {
+    private static readonly Random random = new Random();
     public int Value { get; private set; }
 
     public Die()
@@ -11,6 +12,6 @@ public class Die
 
     public void Roll()
     {
-        Value = Random.Range(1, 7);
+        Value = random.Next(1, 7);
     }
 }

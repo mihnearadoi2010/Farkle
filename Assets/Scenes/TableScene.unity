@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 71573240}
   - component: {fileID: 71573241}
   m_Layer: 0
-  m_Name: dieSelect
+  m_Name: dieHover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 219524434}
   - component: {fileID: 219524435}
   m_Layer: 0
-  m_Name: dieSelect
+  m_Name: dieHover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -914,8 +914,9 @@ GameObject:
   m_Component:
   - component: {fileID: 614154257}
   - component: {fileID: 614154258}
+  - component: {fileID: 614154259}
   m_Layer: 0
-  m_Name: dice_4
+  m_Name: dice_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -992,6 +993,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &614154259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614154256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ac54ff977a2f54b82043fa22653282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dieHover: {fileID: 1565253454}
 --- !u!1 &630975531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,6 +1279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 840984572}
   - component: {fileID: 840984573}
+  - component: {fileID: 840984574}
   m_Layer: 0
   m_Name: dice_0
   m_TagString: Untagged
@@ -1343,6 +1358,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &840984574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840984571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ac54ff977a2f54b82043fa22653282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dieHover: {fileID: 1931010897}
 --- !u!1 &968353405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,6 +1381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 968353406}
   - component: {fileID: 968353407}
+  - component: {fileID: 968353408}
   m_Layer: 0
   m_Name: dice_2
   m_TagString: Untagged
@@ -1431,6 +1460,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &968353408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968353405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ac54ff977a2f54b82043fa22653282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dieHover: {fileID: 71573239}
 --- !u!1 &981860266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +1484,7 @@ GameObject:
   - component: {fileID: 981860267}
   - component: {fileID: 981860268}
   m_Layer: 0
-  m_Name: dieSelect
+  m_Name: dieHover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1528,6 +1570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1155576619}
   - component: {fileID: 1155576620}
+  - component: {fileID: 1155576621}
   m_Layer: 0
   m_Name: dice_3
   m_TagString: Untagged
@@ -1606,6 +1649,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1155576621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155576618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ac54ff977a2f54b82043fa22653282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dieHover: {fileID: 981860266}
+--- !u!1 &1215497126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1215497127}
+  - component: {fileID: 1215497128}
+  m_Layer: 0
+  m_Name: table
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1215497127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215497126}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.011735842, y: 0.0960654, z: -4.433455}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1833657928}
+  - {fileID: 1656978779}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1215497128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215497126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab80da1eb83fc4458619bad52c1e009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npc: {fileID: 1833657929}
+  player: {fileID: 1656978780}
 --- !u!1 &1565253454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,7 +1721,7 @@ GameObject:
   - component: {fileID: 1565253455}
   - component: {fileID: 1565253456}
   m_Layer: 0
-  m_Name: dieSelect
+  m_Name: dieHover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1704,7 +1808,7 @@ GameObject:
   - component: {fileID: 1626844904}
   - component: {fileID: 1626844905}
   m_Layer: 0
-  m_Name: dieSelect
+  m_Name: dieHover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1878,8 +1982,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1635485349}
   - component: {fileID: 1635485350}
+  - component: {fileID: 1635485351}
   m_Layer: 0
-  m_Name: dice_5
+  m_Name: dice_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1956,6 +2061,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1635485351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635485348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ac54ff977a2f54b82043fa22653282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dieHover: {fileID: 219524433}
 --- !u!1 &1656978778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,8 +2083,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1656978779}
+  - component: {fileID: 1656978781}
+  - component: {fileID: 1656978780}
   m_Layer: 0
-  m_Name: playerDice
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1980,19 +2100,68 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656978778}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.53125, y: -1.5625, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5429858, y: -1.6585654, z: 4.433455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 840984572}
   - {fileID: 1727346827}
-  - {fileID: 1155576619}
   - {fileID: 968353406}
-  - {fileID: 614154257}
+  - {fileID: 1155576619}
   - {fileID: 1635485349}
-  m_Father: {fileID: 0}
+  - {fileID: 614154257}
+  m_Father: {fileID: 1215497127}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1656978780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656978778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c594a2811145cd488408d3edecf5b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveThroughDice: {fileID: 4200743228120850198, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  selectDie: {fileID: -834364776922166360, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  scoreAndContinue: {fileID: -7600614117984158850, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  scoreAndPass: {fileID: -3280135624046938904, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+--- !u!114 &1656978781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656978778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17bc4f9cccbd9b42ac1c5f38317398a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceObjects:
+  - {fileID: 840984574}
+  - {fileID: 1727346829}
+  - {fileID: 968353408}
+  - {fileID: 1155576621}
+  - {fileID: 1635485351}
+  - {fileID: 614154259}
+  dieSprites:
+  - {fileID: 39516445742236537, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
+  - {fileID: 2376305099863235458, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
+  - {fileID: 1813239885723335896, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
+  - {fileID: -7464760887336577109, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
+  - {fileID: -8866378825118310145, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
+  - {fileID: -3287765887320952711, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
+  selectedDieSprites:
+  - {fileID: -2581247542019846736, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
+  - {fileID: 8680914486856551693, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
+  - {fileID: 3683005738938273507, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
+  - {fileID: 8848285711845288965, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
+  - {fileID: -5236146288655224132, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
+  - {fileID: 6555460256936766923, guid: bdf98a573e2fd954cb648b2116606b57, type: 3}
 --- !u!1 &1727346826
 GameObject:
   m_ObjectHideFlags: 0
@@ -2003,6 +2172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1727346827}
   - component: {fileID: 1727346828}
+  - component: {fileID: 1727346829}
   m_Layer: 0
   m_Name: dice_1
   m_TagString: Untagged
@@ -2081,6 +2251,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1727346829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727346826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ac54ff977a2f54b82043fa22653282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dieHover: {fileID: 1626844903}
 --- !u!1 &1833657927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,13 +2273,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1833657928}
+  - component: {fileID: 1833657929}
   m_Layer: 0
-  m_Name: npcDice
+  m_Name: npc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1833657928
 Transform:
   m_ObjectHideFlags: 0
@@ -2105,8 +2289,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833657927}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.011735842, y: -0.0960654, z: 4.433455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2116,8 +2300,41 @@ Transform:
   - {fileID: 2138012542}
   - {fileID: 639871824}
   - {fileID: 1627065231}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1215497127}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1833657929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833657927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17bc4f9cccbd9b42ac1c5f38317398a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  dieSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  selectedDieSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1878878158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,7 +2433,7 @@ GameObject:
   - component: {fileID: 1931010898}
   - component: {fileID: 1931010899}
   m_Layer: 0
-  m_Name: dieSelect
+  m_Name: dieHover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2443,5 +2660,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 3469453206947828220}
   - {fileID: 368112584}
-  - {fileID: 1833657928}
-  - {fileID: 1656978779}
+  - {fileID: 1215497127}
