@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -41,3 +41,29 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: sky
+    uniqueID: 463996575
+    locked: 0
+  - name: fortress
+    uniqueID: 1036675557
+    locked: 0
+  - name: ground
+    uniqueID: 301618463
+    locked: 0
+  - name: tree
+    uniqueID: 76411529
+    locked: 0
+  - name: table
+    uniqueID: 4213284473
+    locked: 0
+  - name: board
+    uniqueID: 4012535415
+    locked: 0
+  - name: player
+    uniqueID: 4125568425
+    locked: 0
+  - name: npc
+    uniqueID: 3429153109
+    locked: 0
+  m_RenderingLayers:
+  - Default
