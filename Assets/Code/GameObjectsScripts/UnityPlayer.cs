@@ -1,3 +1,6 @@
+using NUnit.Framework;
+using NUnit.Framework.Internal;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,6 +34,7 @@ public class UnityPlayer : MonoBehaviour
         scoreAndPass.action.Enable();
 
         selectDie.action.performed += OnSelectDie;
+        scoreAndContinue.action.performed += OnScoreAndContinue;
     }
 
     private void OnDisable()
@@ -41,8 +45,14 @@ public class UnityPlayer : MonoBehaviour
         scoreAndPass.action.Disable();
 
         selectDie.action.performed -= OnSelectDie;
+        scoreAndContinue.action.performed -= OnScoreAndContinue;
     }
     #endregion
+
+    public void Setup(GameTable gameTable)
+    {
+        diceGameObjectManager.Setup(gameTable.table, gameTable.table.player1);
+    }
 
     private void MoveThroughDice()
     {
@@ -50,38 +60,78 @@ public class UnityPlayer : MonoBehaviour
         if (moveDir == Vector2Int.zero)
         {
             nextMoveTime = 0;
+            return;
         }
-
-        if (diceGameObjectManager.dieHoveringOverCoords.x + moveDir.x > diceGameObjectManager.dice.GetLength(0) - 1
-            || diceGameObjectManager.dieHoveringOverCoords.x + moveDir.x < 0 
-            || diceGameObjectManager.dieHoveringOverCoords.y - moveDir.y > diceGameObjectManager.dice.GetLength(1) -1
-            || diceGameObjectManager.dieHoveringOverCoords.y - moveDir.y < 0)
+        if (Time.time <= nextMoveTime)
         {
             return;
         }
 
-        if (moveDir != Vector2Int.zero && Time.time >= nextMoveTime)
-        {
-            diceGameObjectManager.dice[(int)diceGameObjectManager.dieHoveringOverCoords.x, (int)diceGameObjectManager.dieHoveringOverCoords.y].IsHoveredOver = false;
-            diceGameObjectManager.dieHoveringOverCoords = new Vector2(diceGameObjectManager.dieHoveringOverCoords.x + moveDir.x, diceGameObjectManager.dieHoveringOverCoords.y - moveDir.y);
-            diceGameObjectManager.dice[(int)diceGameObjectManager.dieHoveringOverCoords.x, (int)diceGameObjectManager.dieHoveringOverCoords.y].IsHoveredOver = true;
+        DieObject bestInLine = null;
+        DieObject bestAlternative = null;
 
-            nextMoveTime = Time.time + moveCooldown;
+        float bestInLineDist = float.MaxValue;
+        float bestAlternativeScore = float.MaxValue;
+        Vector2 startingPosition = diceGameObjectManager.HoveredDie.transform.position;
+
+        float lineTolerance = 0.2f; // changes how much is considered in line
+
+        foreach (var die in diceGameObjectManager.diceObjects)
+        {
+            if (die == diceGameObjectManager.HoveredDie) { continue; }
+            if (!diceGameObjectManager.player.CurrentDice.Contains(die.Die)) { continue; }
+
+            Vector2 direction = (Vector2)die.transform.position - startingPosition;
+
+            var dotProduct = Vector2.Dot(direction, moveDir);
+            if (dotProduct <= 0) { continue; }
+
+            var crossProduct = Mathf.Abs(direction.x * moveDir.y - moveDir.x * direction.y); // weird math shit that says how much the dice in the pressed direction
+            
+            if (crossProduct < lineTolerance)
+            {
+                if (dotProduct < bestInLineDist) { bestInLineDist = dotProduct; bestInLine = die; }
+            }
+            else
+            {
+                var score = dotProduct + 2f * crossProduct;
+                if (score < bestAlternativeScore)
+                {
+                    bestAlternativeScore = score;
+                    bestAlternative = die;
+                }
+            }
         }
+
+        var bestDie = bestInLine != null ? bestInLine : bestAlternative;
+        if (bestDie == null) { return; }
+
+        diceGameObjectManager.HoveredDie.IsHoveredOver = false;
+        diceGameObjectManager.HoveredDie = bestDie;
+        bestDie.IsHoveredOver = true;
+        nextMoveTime = Time.time + moveCooldown;
     }
 
     private void OnSelectDie(InputAction.CallbackContext ctx)
     {
-        var hoveredDie = diceGameObjectManager.dice[(int)diceGameObjectManager.dieHoveringOverCoords.x, (int)diceGameObjectManager.dieHoveringOverCoords.y];
-
-        if (!hoveredDie.IsSelected)
+        if (!diceGameObjectManager.HoveredDie.IsSelected)
         {
-            diceGameObjectManager.SelectedDice.Add(hoveredDie);
+            diceGameObjectManager.SelectedDice.Add(diceGameObjectManager.HoveredDie);
         }
         else
         {
-            diceGameObjectManager.SelectedDice.Remove(hoveredDie);
+            diceGameObjectManager.SelectedDice.Remove(diceGameObjectManager.HoveredDie);
         }
-        hoveredDie.IsSelected = !hoveredDie.IsSelected;
+        diceGameObjectManager.HoveredDie.IsSelected = !diceGameObjectManager.HoveredDie.IsSelected;
     }
+    private void OnScoreAndContinue(InputAction.CallbackContext ctx)
+    {
+        if (diceGameObjectManager.SelectedDice.Contains(diceGameObjectManager.HoveredDie))
+        {
+            diceGameObjectManager.SetFirstDiceHover();
+        }
+
+        diceGameObjectManager.ScoreAndContinue();
+    }
+    
 }

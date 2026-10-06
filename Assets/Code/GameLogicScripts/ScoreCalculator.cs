@@ -27,6 +27,25 @@ public class ScoreCalculator
         return selectedScore;
     }
 
+    public bool HasAnyScoringDice(List<Die> dice)
+    {
+        if (dice.Count == 0 || dice == null)
+        {
+            return false;
+        }
+
+        List<Die> scoredDice = new(); // add dice here so we don't score them twice
+        int selectedScore = 0;
+        selectedScore += GetStraightScore(dice, scoredDice);
+        selectedScore += GetSmallStraightScore1_5(dice, scoredDice);
+        selectedScore += GetSmallStraightScore2_6(dice, scoredDice);
+        selectedScore += GetMoreOfAKindScore(dice, scoredDice);
+        selectedScore += GetOnesScore(dice, scoredDice);
+        selectedScore += GetFivesScore(dice, scoredDice);
+
+        return selectedScore == 0;
+    }
+
     private int GetStraightScore(List<Die> selectedDice, List<Die> scoredDice)
     {
         if (scoredDice.Count > 0) { return 0; }

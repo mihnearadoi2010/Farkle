@@ -1,20 +1,21 @@
-using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DiceGameObjectManager : MonoBehaviour
 {
-    [SerializeField] private DieObject[] diceObjects = new DieObject[6]; // used sice 2d arrays dont work in inspector
+    [SerializeField] public DieObject[] diceObjects = new DieObject[6];
     [SerializeField] private Sprite[] dieSprites = new Sprite[6];
     [SerializeField] private Sprite[] selectedDieSprites = new Sprite[6];
-    public DieObject[,] dice { get; } = new DieObject[3, 2]; // actual dice array since there are 3 on the x and 2 on the y
     public List<DieObject> SelectedDice { get; set; } = new List<DieObject>();
 
-    private Player player;
-    public Vector2 dieHoveringOverCoords { get; set; }
+    private Table table;
+    public Player player { get; private set; }
+    public DieObject HoveredDie { get; set; }
 
     private void Update()
     {
+        if (table == null) { return; }
         for(int i = 0; i < diceObjects.Length; i++)
         {
             if (SelectedDice.Contains(diceObjects[i]))
@@ -27,31 +28,53 @@ public class DiceGameObjectManager : MonoBehaviour
         {
             die.ChangeSprite(selectedDieSprites[die.Die.Value - 1]);
         }
+        for (int i = 0; i < diceObjects.Length; i++)
+        {
+            diceObjects[i].gameObject.SetActive(player.CurrentDice.Contains(diceObjects[i].Die));
+        }
     }
 
-    public void Setup(Player player)
+    public void Setup(Table table, Player player)
     {
+        this.table = table;
         this.player = player;
 
-        dice[0, 0] = diceObjects[0];
-        dice[0, 0].Die = player.dice[0];
+        for (int i = 0; i < diceObjects.Length; i++)
+        {
+            diceObjects[i].Die = player.dice[i];
+        }
 
-        dice[1, 0] = diceObjects[1];
-        dice[1, 0].Die = player.dice[1];
+        SetFirstDiceHover();
+    }
 
-        dice[2, 0] = diceObjects[2];
-        dice[2, 0].Die = player.dice[2];
+    public void SetFirstDiceHover() // after player scores choose a dice which he is hovering over after rolling the dice
+    {
+        if (HoveredDie != null)
+        {
+            HoveredDie.IsHoveredOver = false;
+        }
 
-        dice[0, 1] = diceObjects[3];
-        dice[0, 1].Die = player.dice[3];
+        HoveredDie = diceObjects.Where(d => player.CurrentDice.Contains(d.Die) && !SelectedDice.Contains(d)).First();
 
-        dice[1, 1] = diceObjects[4];
-        dice[1, 1].Die = player.dice[4];
+        if (HoveredDie != null)
+        {
+            HoveredDie.IsHoveredOver = true;
+        }
+    }
 
-        dice[2, 1] = diceObjects[5];
-        dice[2, 1].Die = player.dice[5];
+    public void ScoreAndContinue()
+    {
+        var selectedDieList = new List<Die>();
+        for (int i = 0; i < SelectedDice.Count; i++)
+        {
+            selectedDieList.Add(SelectedDice[i].Die);
+        }
+        if (table.scoreCalculator.CalculateScore(selectedDieList) == 0)
+        {
+            return;
+        }
 
-        dieHoveringOverCoords = Vector2.zero;
-        dice[(int)dieHoveringOverCoords.x, (int)dieHoveringOverCoords.y].IsHoveredOver = true;
+        table.scoreAndContinue(selectedDieList);
+        SelectedDice = new List<DieObject>();
     }
 }
